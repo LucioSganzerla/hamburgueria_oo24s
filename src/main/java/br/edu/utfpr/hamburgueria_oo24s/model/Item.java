@@ -1,4 +1,4 @@
-package model;
+package br.edu.utfpr.hamburgueria_oo24s.model;
 
 import lombok.*;
 
