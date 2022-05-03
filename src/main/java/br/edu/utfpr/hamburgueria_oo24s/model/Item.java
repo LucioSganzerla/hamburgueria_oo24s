@@ -1,6 +1,7 @@
 package br.edu.utfpr.hamburgueria_oo24s.model;
 
 import lombok.*;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.UUID;
@@ -8,16 +9,10 @@ import java.util.UUID;
 import static javax.persistence.GenerationType.*;
 
 @Entity
-@Getter
-@Setter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
+@Getter @Setter @Builder @NoArgsConstructor @AllArgsConstructor @ToString
 public class Item {
 
-    @Id
-    @GeneratedValue(strategy = AUTO)
+    @Id @GeneratedValue(strategy = AUTO) @Type(type = "uuid-char")
     private UUID id;
 
     @Column(unique = true)
@@ -25,6 +20,4 @@ public class Item {
 
     @Column(precision = 2)
     private Double value;
-
-    private Integer stocked;
 }
