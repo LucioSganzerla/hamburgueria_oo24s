@@ -1,9 +1,8 @@
 package br.edu.utfpr.hamburgueria_oo24s.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Data;
+
+import javax.persistence.*;
 
 import static javax.persistence.GenerationType.*;
 
