@@ -26,6 +26,8 @@ public class HamburgueriaOo24SApplication {
                         .value(4.5)
                         .build()
         );
+
+        // TODO simulate shopping product
     }
 
 }
