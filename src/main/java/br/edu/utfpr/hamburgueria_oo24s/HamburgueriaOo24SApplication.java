@@ -24,7 +24,6 @@ public class HamburgueriaOo24SApplication {
                 Item.builder()
                         .description("Coke")
                         .value(4.5)
-                        .stocked(10)
                         .build()
         );
     }
