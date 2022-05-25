@@ -13,7 +13,8 @@ import java.util.List;
 
 import static br.edu.utfpr.hamburgueria_oo24s.model.enums.StockMovimentType.*;
 
-@Service @Slf4j
+@Service
+@Slf4j
 public record BuyProductsService(StockControllRepository stockControllRepository,
                                  StockService stockService) {
 
@@ -31,14 +32,14 @@ public record BuyProductsService(StockControllRepository stockControllRepository
 
     private void saveStockControll(List<ItemQuantityTO> products) {
         log.info("Start saving stockControll from list [...]");
-        products.stream()
-                .map(product -> StockControll.builder()
-                                        .item(product.getItem())
-                                        .type(ENTRANCE)
-                                        .quantity(product.getQuantity())
-                                        .at(LocalDateTime.now())
-                                        .build())
-                .forEach(stockControllRepository::save);
+        stockControllRepository.saveAll(
+                products.stream()
+                        .map(product -> StockControll.builder()
+                                .item(product.getItem())
+                                .type(ENTRANCE)
+                                .quantity(product.getQuantity())
+                                .at(LocalDateTime.now())
+                                .build()).toList());
         log.info("[...] stock controll saved");
     }
 

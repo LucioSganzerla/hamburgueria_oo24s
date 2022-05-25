@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @SpringBootApplication
@@ -27,14 +28,12 @@ public class HamburgueriaOo24SApplication {
 
     @EventListener(ApplicationReadyEvent.class)
     public void doSomethingAfterStartup() {
-        var coke = itemService.save(
+        var coke = itemService.saveAndUpdateStock(
                 Item.builder()
                         .description("Coke")
-                        .value(4.5)
+                        .value(BigDecimal.valueOf(4.5))
                         .build()
         );
-
-
 
         buyProductsService.processBuyList(List.of(
                 new ItemQuantityTO(coke, 10.0)
