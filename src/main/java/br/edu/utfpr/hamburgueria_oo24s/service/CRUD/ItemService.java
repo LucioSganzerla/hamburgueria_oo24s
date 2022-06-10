@@ -33,4 +33,12 @@ public class ItemService extends CrudService<Item, UUID> {
         );
         return itemSaved;
     }
+
+    @Override
+    public Item save(Item object) {
+        Boolean exists = repository.existsByDescription(object.getDescription());
+        if (exists)
+            throw new IllegalArgumentException("Item already exists");
+        return super.save(object);
+    }
 }

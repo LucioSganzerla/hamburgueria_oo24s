@@ -19,5 +19,4 @@ public class HamburgueriaOo24SApplication {
     public static void main(String[] args) {
         SpringApplication.run(HamburgueriaOo24SApplication.class, args);
     }
-
 }
