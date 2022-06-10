@@ -2,25 +2,24 @@ package br.edu.utfpr.hamburgueria_oo24s.service.CRUD;
 
 import br.edu.utfpr.hamburgueria_oo24s.model.Item;
 import br.edu.utfpr.hamburgueria_oo24s.model.Stock;
-import br.edu.utfpr.hamburgueria_oo24s.model.StockRegister;
 import br.edu.utfpr.hamburgueria_oo24s.repository.StockRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
-@Slf4j @Service
-public record StockService(StockRepository repository) {
+@Service @Slf4j @RequiredArgsConstructor
+public class StockService extends CrudService<Stock, Long>{
 
-    public Stock findByItem(Item item) {
-        log.info("Finding stock by item {}", item.getDescription());
-        return repository.findFirstByItem(item);
+    private final StockRepository stockRepository;
+
+    @Override
+    public JpaRepository<Stock, Long> getRepository() {
+        return stockRepository;
     }
 
-    public void save(Stock stock){
-        log.info("Saving stock movimentation from item {}",
-                stock.getItem().getDescription());
-        repository.save(stock);
+    public Stock findFirstByItem(Item item) {
+        log.info("Fetching stock from {}", item.getDescription());
+        return stockRepository.findFirstByItem(item);
     }
-
-
 }
