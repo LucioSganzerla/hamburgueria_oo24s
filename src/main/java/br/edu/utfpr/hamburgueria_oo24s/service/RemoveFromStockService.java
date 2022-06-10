@@ -1,6 +1,5 @@
 package br.edu.utfpr.hamburgueria_oo24s.service;
 
-import br.edu.utfpr.hamburgueria_oo24s.model.Item;
 import br.edu.utfpr.hamburgueria_oo24s.model.OrderItem;
 import br.edu.utfpr.hamburgueria_oo24s.model.StockControll;
 import br.edu.utfpr.hamburgueria_oo24s.model.dto.ItemQuantityTO;

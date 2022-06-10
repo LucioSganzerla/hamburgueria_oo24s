@@ -16,28 +16,8 @@ import java.util.List;
 @SpringBootApplication
 public class HamburgueriaOo24SApplication {
 
-    @Autowired
-    private ItemService itemService;
-
-    @Autowired
-    private BuyProductsService buyProductsService;
-
     public static void main(String[] args) {
         SpringApplication.run(HamburgueriaOo24SApplication.class, args);
-    }
-
-    @EventListener(ApplicationReadyEvent.class)
-    public void doSomethingAfterStartup() {
-        var coke = itemService.saveAndUpdateStock(
-                Item.builder()
-                        .description("Coke")
-                        .value(BigDecimal.valueOf(4.5))
-                        .build()
-        );
-
-        buyProductsService.processBuyList(List.of(
-                new ItemQuantityTO(coke, 10.0)
-        ));
     }
 
 }

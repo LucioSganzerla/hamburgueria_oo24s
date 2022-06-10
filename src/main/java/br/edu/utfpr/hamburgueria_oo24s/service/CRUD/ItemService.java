@@ -6,6 +6,7 @@ import br.edu.utfpr.hamburgueria_oo24s.repository.ItemRepository;
 import br.edu.utfpr.hamburgueria_oo24s.repository.StockRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -22,7 +23,7 @@ public class ItemService extends CrudService<Item, UUID> {
     }
 
     public Item saveAndUpdateStock(Item item) {
-        log.info("Saving item {}", item.getDescription());
+                log.info("Saving item {}", item.getDescription());
         var itemSaved = repository.saveAndFlush(item);
         log.info("Creating stock cell to {}", item.getDescription());
         stockRepository.save(

@@ -19,12 +19,10 @@ public abstract class CrudService<T extends Model, R> {
 
     public T save(T object) {
         assert object != null;
-        log.info("Saving {}", object.getClass().getSimpleName());
         return getRepository().save(object);
     }
 
     public T getById(R id) {
-        log.info("Fetching elemnt {}", id);
         return getRepository().getById(id);
     }
 

@@ -17,6 +17,7 @@ import static javax.persistence.GenerationType.*;
 
 @Entity
 @NoArgsConstructor
+@Table(name = "my_order")
 public class Order extends Model{
 
     @Id
